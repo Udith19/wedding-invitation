@@ -88,8 +88,8 @@
         /* Botanical image as full-bleed background layer */
         #hero-botanical-bg {
             position: absolute; inset: 0;
-            background: url('../uploads/WhatsApp_Image_2026-04-30_at_13_23_46.jpeg') center center / cover no-repeat;
-            opacity: 0.55;
+            background: url('../uploads/background_1.png') center bottom / cover no-repeat;
+            opacity: 0.75;
             z-index: 0;
         }
         /* Soft cream veil so text stays readable */
@@ -97,9 +97,9 @@
             position: absolute; inset: 0;
             background: linear-gradient(
                 160deg,
-                rgba(253,248,240,0.55) 0%,
-                rgba(253,248,240,0.30) 40%,
-                rgba(253,248,240,0.60) 100%
+                rgba(253,248,240,0.50) 0%,
+                rgba(253,248,240,0.20) 40%,
+                rgba(253,248,240,0.45) 100%
             );
             z-index: 1;
         }
@@ -823,6 +823,104 @@
             margin: 2rem auto;
         }
 
+        /* ─── FLORAL DECORATIONS ─── */
+        .floral {
+            position: absolute;
+            pointer-events: none;
+            background-image: url('../uploads/background_1.png');
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+        /* Bottom-left: shows left lotus cluster */
+        .floral-bl {
+            width: 480px; height: 280px;
+            bottom: 0; left: 0;
+            background-size: 900px auto;
+            background-position: left bottom;
+            opacity: 0.22;
+        }
+        /* Bottom-right: mirror of left cluster */
+        .floral-br {
+            width: 480px; height: 280px;
+            bottom: 0; right: 0;
+            background-size: 900px auto;
+            background-position: right bottom;
+            opacity: 0.22;
+            transform: scaleX(-1);
+        }
+        /* Top-left: rotated so stems point down */
+        .floral-tl {
+            width: 380px; height: 240px;
+            top: 0; left: 0;
+            background-size: 900px auto;
+            background-position: left bottom;
+            opacity: 0.15;
+            transform: scaleY(-1);
+        }
+        /* Top-right: rotated + mirrored */
+        .floral-tr {
+            width: 380px; height: 240px;
+            top: 0; right: 0;
+            background-size: 900px auto;
+            background-position: right bottom;
+            opacity: 0.15;
+            transform: scale(-1, -1);
+        }
+        /* Side accent — tall, narrow strip showing left plant only */
+        .floral-left {
+            width: 280px; height: 400px;
+            top: 50%; left: 0;
+            transform: translateY(-50%);
+            background-size: 600px auto;
+            background-position: left center;
+            opacity: 0.18;
+        }
+        .floral-right {
+            width: 280px; height: 400px;
+            top: 50%; right: 0;
+            transform: translateY(-50%) scaleX(-1);
+            background-size: 600px auto;
+            background-position: left center;
+            opacity: 0.18;
+        }
+        /* Smaller accent for tight sections */
+        .floral-bl-sm {
+            width: 300px; height: 200px;
+            bottom: 0; left: 0;
+            background-size: 700px auto;
+            background-position: left bottom;
+            opacity: 0.18;
+        }
+        .floral-br-sm {
+            width: 300px; height: 200px;
+            bottom: 0; right: 0;
+            background-size: 700px auto;
+            background-position: right bottom;
+            opacity: 0.18;
+            transform: scaleX(-1);
+        }
+        /* Dark-section variant (for countdown/venue with dark bg) */
+        .floral-dark {
+            filter: invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(1.8);
+            opacity: 0.10;
+        }
+        /* Ensure sections using floals have relative positioning */
+        #invitation, #countdown, #timeline, #venue, #details, #rsvp, footer {
+            overflow: hidden;
+        }
+
+        /* Ensure section content stays above floral layers */
+        #invitation > *:not(.floral),
+        #countdown > *:not(.floral),
+        #timeline > *:not(.floral),
+        #venue > *:not(.floral),
+        #details > *:not(.floral),
+        #rsvp > *:not(.floral),
+        footer > *:not(.floral) {
+            position: relative;
+            z-index: 1;
+        }
+
         /* ─── SCROLL REVEAL ─── */
         .sr {
             opacity: 0;
@@ -923,7 +1021,7 @@
             <div class="hero-couple-ring"></div>
             <div class="hero-couple-ring2"></div>
             <img
-                src="https://github.com/Udith19/wedding-invitation/tree/main/Gemini_Generated_Image_r0rvn8r0rvn8r0rves.png"
+                src="https://raw.githubusercontent.com/Udith19/wedding-invitation/main/Gemini_Generated_Image_r0rvn8r0rvn8r0rves.png"
                 alt="Poorna & Kethaka"
                 class="hero-couple-img"
             >
@@ -939,6 +1037,10 @@
 
 <!-- ═══════════ INVITATION ═══════════ -->
 <section id="invitation">
+    <div class="floral floral-bl"></div>
+    <div class="floral floral-br"></div>
+    <div class="floral floral-tl"></div>
+    <div class="floral floral-tr"></div>
     <div class="invitation-card sr sr-scale">
         <div class="invitation-inner">
             <!-- Corner ornaments -->
@@ -992,6 +1094,8 @@
 
 <!-- ═══════════ COUNTDOWN ═══════════ -->
 <section id="countdown">
+    <div class="floral floral-bl floral-dark"></div>
+    <div class="floral floral-br floral-dark"></div>
     <p class="countdown-label sr">Counting down to forever</p>
     <div class="countdown-grid sr sr-d1">
         <div class="countdown-unit">
@@ -1018,6 +1122,10 @@
 
 <!-- ═══════════ TIMELINE ═══════════ -->
 <section id="timeline">
+    <div class="floral floral-left"></div>
+    <div class="floral floral-right"></div>
+    <div class="floral floral-bl-sm"></div>
+    <div class="floral floral-br-sm"></div>
     <div class="section-header sr">
         <span class="section-eyebrow">The Day's Programme</span>
         <h2 class="section-title">The Celebration</h2>
@@ -1090,6 +1198,10 @@
 
 <!-- ═══════════ VENUE ═══════════ -->
 <section id="venue">
+    <div class="floral floral-bl floral-dark"></div>
+    <div class="floral floral-br floral-dark"></div>
+    <div class="floral floral-tl floral-dark"></div>
+    <div class="floral floral-tr floral-dark"></div>
     <div class="section-header sr">
         <span class="section-eyebrow">Where we'll start our forever</span>
         <h2 class="section-title" style="color:white">Find Us</h2>
@@ -1113,6 +1225,10 @@
 
 <!-- ═══════════ DETAILS ═══════════ -->
 <section id="details">
+    <div class="floral floral-tl"></div>
+    <div class="floral floral-tr"></div>
+    <div class="floral floral-bl-sm"></div>
+    <div class="floral floral-br-sm"></div>
     <div class="section-header sr">
         <span class="section-eyebrow">Good to Know</span>
         <h2 class="section-title">Details</h2>
@@ -1164,6 +1280,10 @@
 
 <!-- ═══════════ RSVP ═══════════ -->
 <section id="rsvp">
+    <div class="floral floral-left"></div>
+    <div class="floral floral-right"></div>
+    <div class="floral floral-bl-sm"></div>
+    <div class="floral floral-br-sm"></div>
     <div class="rsvp-wrap">
         <div class="section-header sr">
             <span class="section-eyebrow">Kindly respond by June 1st</span>
@@ -1215,6 +1335,8 @@
 
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer>
+    <div class="floral floral-bl floral-dark"></div>
+    <div class="floral floral-br floral-dark"></div>
     <div class="footer-line"></div>
     <span class="footer-names">Poorna &amp; Kethaka</span>
     <p class="footer-date">03 · August · 2026 · Colombo</p>
